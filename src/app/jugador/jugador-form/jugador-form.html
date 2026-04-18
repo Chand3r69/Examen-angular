@@ -1,0 +1,21 @@
+<p>jugador-form works!</p>
+
+<div class="container">
+  <h3>Nuevo Jugador</h3>
+
+  <input class="form-control mb-2"
+    placeholder="Nickname"
+    [(ngModel)]="jugador().nickname">
+
+  <input class="form-control mb-2"
+    type="number"
+    [(ngModel)]="jugador().nivel">
+
+  <input class="form-control mb-2"
+    type="date"
+    [(ngModel)]="jugador().fechaRegistro">
+
+  <button class="btn btn-success" (click)="guardar()">
+    Guardar
+  </button>
+</div>

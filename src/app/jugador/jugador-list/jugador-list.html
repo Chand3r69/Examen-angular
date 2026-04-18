@@ -1,0 +1,32 @@
+<p>jugador-list works!</p>
+
+
+<div class="container mt-3">
+  <h2>Jugadores</h2>
+
+  <a routerLink="/jugador/nuevo" class="btn btn-primary mb-2">
+    Nuevo Jugador
+  </a>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th>Nickname</th>
+        <th>Nivel</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr *ngFor="let j of jugadores">
+        <td>{{ j.nickname }}</td>
+        <td>{{ j.nivel }}</td>
+        <td>
+          <button class="btn btn-danger btn-sm" (click)="eliminar(j.id!)">
+            Eliminar
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
