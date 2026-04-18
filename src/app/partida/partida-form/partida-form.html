@@ -1,1 +1,35 @@
 <p>partida-form works!</p>
+
+<div class="container">
+  <h3>Nueva Partida</h3>
+
+  <input class="form-control mb-2"
+    type="number"
+    placeholder="Puntuación"
+    [(ngModel)]="partida().puntuacion">
+
+  <input class="form-control mb-2"
+    type="number"
+    placeholder="Duración"
+    [(ngModel)]="partida().duracion">
+
+  <input class="form-control mb-2"
+    type="date"
+    [(ngModel)]="partida().fecha">
+
+  <!-- 🔥 ESTE ES TU SELECT -->
+  <select class="form-select mb-2"
+    [(ngModel)]="partida().jugadorId">
+
+    <option value="0">Seleccione jugador</option>
+
+    <option *ngFor="let j of jugadores()" [value]="j.id">
+      {{ j.nickname }}
+    </option>
+
+  </select>
+
+  <button class="btn btn-primary" (click)="guardar()">
+    Guardar
+  </button>
+</div>

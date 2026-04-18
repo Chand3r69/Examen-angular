@@ -1,1 +1,17 @@
 <p>partida-list works!</p>
+
+<div class="container">
+  <h3>Partidas</h3>
+
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let p of partidas()">
+
+      🎮 {{ p.puntuacion }} pts
+
+      <br>
+
+      👤 {{ getJugadorNombre(p.jugadorId) }}
+
+    </li>
+  </ul>
+</div>
