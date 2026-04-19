@@ -1,1 +1,38 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* 🌌 Fondo global */
+body {
+  background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+  color: #ffffff;
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* 🧊 contenedores */
+.container {
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 12px;
+  padding: 20px;
+}
+
+/* 📊 tablas */
+table {
+  background: #1e1e2f !important;
+  color: white !important;
+}
+
+thead {
+  background: #0d6efd !important;
+  color: white;
+}
+
+/* hover filas */
+.table-hover tbody tr:hover {
+  background-color: rgba(255,255,255,0.1);
+}
+
+/* botones */
+.btn {
+  border-radius: 8px;
+}
+

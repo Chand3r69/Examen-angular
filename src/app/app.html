@@ -1,20 +1,31 @@
 <h1>Examen Angular</h1>
 
-<nav class="navbar navbar-dark bg-dark px-4">
-  <span class="navbar-brand">RegistroJuegos</span>
+<nav class="navbar navbar-dark bg-dark px-4 shadow">
+  <span class="navbar-brand fw-bold">🤖 Registro_Jugador-Partida</span>
 
   <div>
-    <a routerLink="/jugadores" class="btn btn-outline-light btn-sm me-2" >Jugadores</a>
-    <a routerLink="/partidas" class="btn btn-outline-light btn-sm">Partidas</a>
-    <a routerLink="/inicio" class="btn btn-outline-light btn-sm me-2 ms-2">Inicio</a>
+    <a routerLink="/inicio" class="btn btn-outline-light btn-sm me-2">Inicio</a>
+    <a routerLink="/jugadores" class="btn btn-outline-primary btn-sm me-2">Jugadores</a>
+    <a routerLink="/partidas" class="btn btn-outline-success btn-sm">Partidas</a>
   </div>
 </nav>
 
+<div class="position-fixed top-0 end-0 p-3" style="z-index: 9999">
+  <div id="toastMsg" class="toast align-items-center text-bg-secondary border-0">
+    <div class="d-flex">
+      <div class="toast-body" id="toastText">
+        Mensaje
+      </div>
+      <button type="button" class="btn-close btn-close-white me-2 m-auto"
+        data-bs-dismiss="toast"></button>
+    </div>
+  </div>
+</div>
 
 <hr>
 
 <router-outlet></router-outlet>
 
-<footer class="text-center mt-5 p-3 bg-dark text-light">
-  Examen3erParcial © 2026 - Angular + IndexedDB
+<footer class="text-center mt-5 p-3 bg-dark text-light shadow">
+  👾 Examen3erParcial © 2026 - Angular + IndexedDB 🌑 By Jhair Choque 🚀
 </footer>

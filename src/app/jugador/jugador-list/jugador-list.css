@@ -1,0 +1,32 @@
+/* fondo general del componente */
+:host {
+  display: block;
+  background: linear-gradient(to right, #141e30, #243b55);
+  min-height: 100vh;
+  padding: 20px;
+  color: white;
+}
+
+/* tarjeta */
+.container {
+  background: rgba(0,0,0,0.6);
+  border-radius: 10px;
+  padding: 20px;
+}
+
+/* tabla */
+table {
+  background: white;
+  color: black;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+/* botones */
+button {
+  transition: 0.2s;
+}
+
+button:hover {
+  transform: scale(1.05);
+}

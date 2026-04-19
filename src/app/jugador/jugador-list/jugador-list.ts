@@ -8,7 +8,8 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-jugador-list',
   imports: [CommonModule, RouterModule],
-  templateUrl: './jugador-list.html'
+  templateUrl: './jugador-list.html',
+  styleUrl: './jugador-list.css'
 })
 export class JugadorList {
 
@@ -27,8 +28,13 @@ export class JugadorList {
   }
 
   async eliminar(id: number) {
+    const ok = confirm('¿Eliminar este jugador?');
+    if (!ok) return;
+
       await this.service.eliminar(id);
-      await this.cargar();
+      this.cargar();
+
+      (window as any).mostrarToast('Jugador eliminado', 'danger');
   }
 
   editar(j: Jugador) {

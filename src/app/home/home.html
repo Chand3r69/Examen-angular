@@ -1,13 +1,70 @@
-<p>home works!</p>
-<div class="container text-center mt-5  " >
-  <h2>Bienvenido a Registro de Jugadores 🎮</h2>
-  <p>Gestiona jugadores y partidas fácilmente</p>
+<p>home works! - Esta es la Vista de Inicio</p>
+<div class="container text-center mt-5 shadow">
 
-  <a routerLink="/jugadores" class="btn btn-outline-primary me-2">
-    Ver Jugadores
+  <h1 class="mb-3">🚀 Bienvenido</h1>
+
+  <p class="mb-4">Gestiona jugadores y partidas con Anglar e IndexedDB</p>
+
+  <a routerLink="/jugadores" class="btn btn-outline-primary fs-5 me-2">
+    👽 Jugadores
   </a>
 
-  <a routerLink="/partidas" class="btn btn-outline-success">
-    Ver Partidas
+  <a routerLink="/partidas"  class="btn btn-outline-success fs-5 ">
+    🎮 Partidas
   </a>
+
+</div>
+
+<div id="homeCarousel" class="carousel slide mt-5 shadow w-75 mx-auto" data-bs-ride="carousel">
+
+  <div class="carousel-inner rounded">
+
+    <div class="carousel-item active">
+      <img src="https://images.unsplash.com/photo-1511512578047-dfb367046420"
+           class="d-block w-100"
+           style="height: 300px; object-fit: cover;"
+           alt="gaming">
+      <div class="carousel-caption">
+        <h5 >🎮 Jugadores</h5>
+        <a routerLink="/jugadores" class="btn btn-primary btn-sm">
+          Ir a jugadores
+        </a>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <img src="https://images.unsplash.com/photo-1552820728-8b83bb6b773f"
+           class="d-block w-100"
+           style="height: 300px; object-fit: cover;"
+           alt="games">
+      <div class="carousel-caption">
+        <h5>🏆 Partidas</h5>
+        <a routerLink="/partidas" class="btn btn-success btn-sm">
+          Ver partidas
+        </a>
+      </div>
+    </div>
+
+    <div class="carousel-item">
+      <img src="https://ix-marketing.imgix.net/liftkit-hero.png"
+           class="d-block w-100"
+           style="height: 300px; object-fit: cover;"
+           alt="database">
+      <div class="carousel-caption">
+        <h5>💾 IndexedDB</h5>
+        <p>Sistema local persistente</p>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- controles -->
+  <button class="carousel-control-prev" type="button" data-bs-target="#homeCarousel" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon"></span>
+  </button>
+
+  <button class="carousel-control-next" type="button" data-bs-target="#homeCarousel" data-bs-slide="next">
+    <span class="carousel-control-next-icon"></span>
+  </button>
+
 </div>

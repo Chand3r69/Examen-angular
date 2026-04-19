@@ -1,26 +1,33 @@
-<p>jugador-form works!</p>
+<p>jugador-form works! - Esta es la Vista de Form de Jugador</p>
 
-<div class="container">
-  <h3>Nuevo Jugador</h3>
-  <h6>Nickname del jugador</h6>
-  <input class="form-control mb-2 w-50"
-    placeholder="Nickname"
-    [(ngModel)]="jugador().nickname"
-    (ngModelChange)="jugador.update(j => ({ ...j, nickname: $event }))">
+<div class="container mt-5 text-center shadow">
 
-  <h6>Nivel del jugador</h6>
-  <input class="form-control mb-2 w-50"
-    type="number"
-    [(ngModel)]="jugador().nivel">
+  <h3 class="mb-4">
+    {{ jugador().id ? '✏️ Editar Jugador' : '🚀 Nuevo Jugador' }}
+  </h3>
 
-  <h6>Fecha de Registro</h6>
-  <input class="form-control mb-2 w-50 "
-    type="date"
-    [(ngModel)]="jugador().fechaRegistro">
+  <div class="w-50 mx-auto text-start">
 
+    <label class="form-label">Nickname</label>
+    <input class="form-control mb-3"
+      placeholder="Ej: NoobMaster69"
+      [(ngModel)]="jugador().nickname"
+      (ngModelChange)="jugador.update(j => ({ ...j, nickname: $event }))">
 
+    <label class="form-label">Nivel</label>
+    <input class="form-control mb-3"
+      type="number"
+      min="1"
+      [(ngModel)]="jugador().nivel">
 
-  <button class="btn btn-success" (click)="guardar( )">
-    Guardar
-  </button>
+    <label class="form-label">Fecha de Registro</label>
+    <input class="form-control mb-4"
+      type="date"
+      [(ngModel)]="jugador().fechaRegistro">
+
+    <button class="btn btn-success w-100" (click)="guardar()">
+      💾 Guardar
+    </button>
+
+  </div>
 </div>

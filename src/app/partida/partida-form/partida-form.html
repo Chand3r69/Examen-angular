@@ -1,38 +1,43 @@
-<p>partida-form works!</p>
+<p>partida-form works! - Esta es la Vista de Form de Partida</p>
 
-<div class="container">
-  <h3>Nueva Partida</h3>
+<div class="container mt-5 text-center shadow">
 
-  <h6>Puntuación</h6>
-  <input class="form-control mb-2 w-50"
-    type="number"
-    placeholder="Puntuación"
-    [(ngModel)]="partida().puntuacion">
+  <h3 class="mb-4 fw-bold fs-1">
+    {{ partida().id ? '✏️ Editar Partida' : '🎮 Nueva Partida' }}
+  </h3>
 
-  <h6>Duración</h6>
-  <input class="form-control mb-2 w-50"
-    type="number"
-    placeholder="Duración"
-    [(ngModel)]="partida().duracion">
+  <div class="w-50 mx-auto text-start">
 
-  <h6>Fecha</h6>
-  <input class="form-control mb-2 w-50"
-    type="date"
-    [(ngModel)]="partida().fecha">
+    <label class="form-label">Puntuación</label>
+    <input class="form-control mb-3"
+      type="number"
+      [(ngModel)]="partida().puntuacion">
 
-  <h6>Jugador</h6>
-  <select class="form-select mb-2 w-50"
-    [(ngModel)]="partida().jugadorId">
+    <label class="form-label">Duración (minutos)</label>
+    <input class="form-control mb-3"
+      type="number"
+      [(ngModel)]="partida().duracion">
 
-    <option value="0">Seleccione jugador</option>
+    <label class="form-label">Fecha</label>
+    <input class="form-control mb-3"
+      type="date"
+      [(ngModel)]="partida().fecha">
 
-    <option *ngFor="let j of jugadores()" [value]="j.id">
-      {{ j.nickname }}
-    </option>
+    <label class="form-label">Jugador</label>
+    <select class="form-select mb-4"
+      [(ngModel)]="partida().jugadorId">
 
-  </select>
+      <option value="0">Seleccione jugador</option>
 
-  <button class="btn btn-primary" (click)="guardar()">
-    Guardar
-  </button>
+      <option *ngFor="let j of jugadores()" [value]="j.id">
+        {{ j.nickname }}
+      </option>
+
+    </select>
+
+    <button class="btn btn-outline-success w-100" (click)="guardar()">
+      💾 Guardar
+    </button>
+
+  </div>
 </div>

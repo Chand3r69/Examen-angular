@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
   selector: 'app-partida-list',
   imports: [CommonModule, RouterModule],
   templateUrl: './partida-list.html',
-  styleUrl: './partida-list.css',
+
 })
 export class PartidaList {
   partidas = signal<Partida[]>([]);
@@ -44,8 +44,16 @@ export class PartidaList {
   }
 
   async eliminar(id: number) {
+    const ok = confirm('¿Eliminar esta partida?');
+    if (!ok) return;
+
     await this.partidaService.eliminar(id);
     this.cargar();
+
+    (window as any).mostrarToast('Partida eliminada', 'danger');
   }
 
 }
+
+
+

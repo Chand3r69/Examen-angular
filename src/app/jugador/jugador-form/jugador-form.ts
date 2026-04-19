@@ -1,5 +1,6 @@
-import { Component, signal, Signal } from '@angular/core';
+import { Component, signal } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
 import { Jugador } from '../../modelos/jugador';
 import { JugadorService } from '../../servicios/jugador';
 
@@ -9,38 +10,61 @@ import { JugadorService } from '../../servicios/jugador';
   templateUrl: './jugador-form.html',
 })
 export class JugadorForm {
+
   jugador = signal<Jugador>({
     nickname: '',
     nivel: 1,
     fechaRegistro: ''
-
   });
 
-  constructor(private service: JugadorService) {
+  constructor(
+    private service: JugadorService,
+    private router: Router
+  ) {
 
     const nav = history.state;
-    console.log('EDIT DATA:', nav.jugador);
 
-    if (nav.jugador) {
+    if (nav?.jugador) {
       this.jugador.set({
-      ...nav.jugador,
-      id: nav.jugador.id // 👈 FORZAR ID
-    });
+        ...nav.jugador,
+        id: nav.jugador.id
+      });
     }
   }
+
   async guardar() {
     const j = this.jugador();
 
+    if (!j.nickname?.trim()) {
+      this.mostrarToast('El nickname es obligatorio');
+      return;
+    }
+
+    if (j.nivel <= 0) {
+      this.mostrarToast('Nivel inválido');
+      return;
+    }
+
     if (j.id) {
       await this.service.actualizar(j);
-      alert('Jugador actualizado');
+      this.mostrarToast('Jugador actualizado');
     } else {
       await this.service.crear(j);
-      alert('Jugador creado');
+      this.mostrarToast('Jugador creado');
     }
-    location.href = '/jugadores';
+
+    this.router.navigate(['/jugadores']);
   }
 
+  mostrarToast(msg: string) {
+    const toastEl = document.getElementById('toastMsg');
+    const text = document.getElementById('toastText');
 
+    if (toastEl && text) {
+      text.innerText = msg;
 
+      const toast = new (window as any).bootstrap.Toast(toastEl);
+      toast.show();
+    }
+  }
 }
