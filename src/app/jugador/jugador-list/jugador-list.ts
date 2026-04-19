@@ -1,34 +1,40 @@
-import { Component } from '@angular/core';
+import { Component, signal } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import { JugadorService } from '../../servicios/jugador';
 import { Jugador } from '../../modelos/jugador';
-import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-jugador-list',
-  imports: [CommonModule],
-  templateUrl: './jugador-list.html',
-  styleUrl: './jugador-list.css',
+  imports: [CommonModule, RouterModule],
+  templateUrl: './jugador-list.html'
 })
 export class JugadorList {
-  jugadores: Jugador[] = [];
 
-  constructor(private jugadorService: JugadorService) {}
+  jugadores = signal<Jugador[]>([]);
 
-  ngOnInit(): void {
-    this.cargarJugadores();
+  constructor(
+    private service: JugadorService,
+    private router: Router
+  ) {
+    this.cargar();
   }
 
-  cargarJugadores() {
-    this.jugadorService.listar().then(data => {
-      this.jugadores = data;
+  async cargar() {
+    const data = await this.service.listar();
+    this.jugadores.set(data);
+  }
+
+  async eliminar(id: number) {
+      await this.service.eliminar(id);
+      await this.cargar();
+  }
+
+  editar(j: Jugador) {
+    this.router.navigate(['/jugadores/nuevo'], {
+      state: { jugador: j }
     });
   }
-
-  eliminar(id: number) {
-    this.jugadorService.eliminar(id).then(() => {
-      this.cargarJugadores();
-    });
-  }
-
 
 }

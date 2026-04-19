@@ -44,6 +44,12 @@ export class IndexedDBService {
   }
 
   async update(store: string, data: any) {
+    if (!data.id) {
+      throw new Error('ID requerido para actualizar');
+    }
+
     return (await this.dbPromise).put(store, data);
   }
+
+
 }

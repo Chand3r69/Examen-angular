@@ -1,11 +1,20 @@
 <h1>Examen Angular</h1>
 
-<nav>
-  <a routerLink="/jugadores">Jugadores</a> |
-  <a routerLink="/jugadores/nuevo">Nuevo Jugador</a> |
-  <a routerLink="/partidas">Partidas</a>
+<nav class="navbar navbar-dark bg-dark px-4">
+  <span class="navbar-brand">RegistroJuegos</span>
+
+  <div>
+    <a routerLink="/jugadores" class="btn btn-outline-light btn-sm me-2" >Jugadores</a>
+    <a routerLink="/partidas" class="btn btn-outline-light btn-sm">Partidas</a>
+    <a routerLink="/inicio" class="btn btn-outline-light btn-sm me-2 ms-2">Inicio</a>
+  </div>
 </nav>
+
 
 <hr>
 
 <router-outlet></router-outlet>
+
+<footer class="text-center mt-5 p-3 bg-dark text-light">
+  Examen3erParcial © 2026 - Angular + IndexedDB
+</footer>

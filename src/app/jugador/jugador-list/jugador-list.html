@@ -4,11 +4,11 @@
 <div class="container mt-3">
   <h2>Jugadores</h2>
 
-  <a routerLink="/jugador/nuevo" class="btn btn-primary mb-2">
+  <a routerLink="/jugadores/nuevo" class="btn btn-primary mb-2">
     Nuevo Jugador
   </a>
 
-  <table class="table table-bordered">
+  <table class="table table-bordered table-striped">
     <thead>
       <tr>
         <th>Nickname</th>
@@ -18,13 +18,18 @@
     </thead>
 
     <tbody>
-      <tr *ngFor="let j of jugadores">
+      <tr *ngFor="let j of jugadores()">
         <td>{{ j.nickname }}</td>
         <td>{{ j.nivel }}</td>
         <td>
-          <button class="btn btn-danger btn-sm" (click)="eliminar(j.id!)">
+          <button class="btn btn-danger btn-sm me-1 ms-2" (click)="eliminar(j.id!)">
             Eliminar
           </button>
+          <button class="btn btn-warning btn-sm me-1 ms-2"
+            (click)="editar(j)">
+            Editar
+          </button>
+
         </td>
       </tr>
     </tbody>

@@ -18,10 +18,29 @@ export class JugadorForm {
 
   constructor(private service: JugadorService) {
 
+    const nav = history.state;
+    console.log('EDIT DATA:', nav.jugador);
+
+    if (nav.jugador) {
+      this.jugador.set({
+      ...nav.jugador,
+      id: nav.jugador.id // 👈 FORZAR ID
+    });
+    }
   }
-  async guardar (){
-      await this.service.crear(this.jugador());
+  async guardar() {
+    const j = this.jugador();
+
+    if (j.id) {
+      await this.service.actualizar(j);
+      alert('Jugador actualizado');
+    } else {
+      await this.service.crear(j);
       alert('Jugador creado');
     }
+    location.href = '/jugadores';
+  }
+
+
 
 }

@@ -2,20 +2,25 @@
 
 <div class="container">
   <h3>Nuevo Jugador</h3>
-
-  <input class="form-control mb-2"
+  <h6>Nickname del jugador</h6>
+  <input class="form-control mb-2 w-50"
     placeholder="Nickname"
-    [(ngModel)]="jugador().nickname">
+    [(ngModel)]="jugador().nickname"
+    (ngModelChange)="jugador.update(j => ({ ...j, nickname: $event }))">
 
-  <input class="form-control mb-2"
+  <h6>Nivel del jugador</h6>
+  <input class="form-control mb-2 w-50"
     type="number"
     [(ngModel)]="jugador().nivel">
 
-  <input class="form-control mb-2"
+  <h6>Fecha de Registro</h6>
+  <input class="form-control mb-2 w-50 "
     type="date"
     [(ngModel)]="jugador().fechaRegistro">
 
-  <button class="btn btn-success" (click)="guardar()">
+
+
+  <button class="btn btn-success" (click)="guardar( )">
     Guardar
   </button>
 </div>

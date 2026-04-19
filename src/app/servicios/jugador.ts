@@ -20,4 +20,7 @@ export class JugadorService {
   eliminar(id: number) {
     return this.db.delete(this.store, id);
   }
+  actualizar(j: Jugador) {
+    return this.db.update(this.store, j);
+  }
 }

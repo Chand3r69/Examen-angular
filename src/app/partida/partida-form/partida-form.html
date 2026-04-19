@@ -3,22 +3,25 @@
 <div class="container">
   <h3>Nueva Partida</h3>
 
-  <input class="form-control mb-2"
+  <h6>Puntuación</h6>
+  <input class="form-control mb-2 w-50"
     type="number"
     placeholder="Puntuación"
     [(ngModel)]="partida().puntuacion">
 
-  <input class="form-control mb-2"
+  <h6>Duración</h6>
+  <input class="form-control mb-2 w-50"
     type="number"
     placeholder="Duración"
     [(ngModel)]="partida().duracion">
 
-  <input class="form-control mb-2"
+  <h6>Fecha</h6>
+  <input class="form-control mb-2 w-50"
     type="date"
     [(ngModel)]="partida().fecha">
 
-  <!-- 🔥 ESTE ES TU SELECT -->
-  <select class="form-select mb-2"
+  <h6>Jugador</h6>
+  <select class="form-select mb-2 w-50"
     [(ngModel)]="partida().jugadorId">
 
     <option value="0">Seleccione jugador</option>

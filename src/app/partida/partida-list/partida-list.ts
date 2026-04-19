@@ -4,11 +4,13 @@ import { PartidaService } from '../../servicios/partida';
 import { JugadorService } from '../../servicios/jugador';
 import { Partida } from '../../modelos/partida';
 import { Jugador } from '../../modelos/jugador';
+import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({
   selector: 'app-partida-list',
-  imports: [CommonModule],
+  imports: [CommonModule, RouterModule],
   templateUrl: './partida-list.html',
   styleUrl: './partida-list.css',
 })
@@ -18,7 +20,8 @@ export class PartidaList {
 
   constructor(
     private partidaService: PartidaService,
-    private jugadorService: JugadorService
+    private jugadorService: JugadorService,
+    private router: Router
   ) {
     this.cargar();
   }
@@ -28,8 +31,21 @@ export class PartidaList {
     this.jugadores.set(await this.jugadorService.listar());
   }
 
-  getJugadorNombre(id: number) {
-    return this.jugadores().find(j => j.id === id)?.nickname || 'N/A';
+  getJugadorNombre(id: any) {
+    return this.jugadores()
+      .find(j => Number(j.id) === Number(id))
+      ?.nickname || 'N/A';
+  }
+
+  editar(p: Partida) {
+    this.router.navigate(['/partidas/nueva'], {
+      state: { partida: p }
+    });
+  }
+
+  async eliminar(id: number) {
+    await this.partidaService.eliminar(id);
+    this.cargar();
   }
 
 }

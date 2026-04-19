@@ -26,14 +26,28 @@ export class PartidaForm {
     private partidaService: PartidaService
   ) {
     this.cargarJugadores();
+    const nav = history.state;
+
+    if (nav.partida) {
+      this.partida.set({ ...nav.partida });
+    }
   }
   async cargarJugadores() {
     this.jugadores.set(await this.jugadorService.listar());
   }
 
   async guardar() {
-    await this.partidaService.crear(this.partida());
-    alert('Partida creada');
+    const p = this.partida();
+
+    if (p.id) {
+      await this.partidaService.actualizar(p);
+      alert('Partida actualizada');
+    } else {
+      await this.partidaService.crear(p);
+      alert('Partida creada');
+    }
+
+    location.href = '/partidas';
   }
 
 }

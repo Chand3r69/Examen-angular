@@ -2,15 +2,28 @@
 
 <div class="container">
   <h3>Partidas</h3>
+  <a routerLink="/partidas/nueva" class="btn btn-primary mb-2">
+    🎮 Nueva Partida
+  </a>
 
   <ul class="list-group">
-    <li class="list-group-item" *ngFor="let p of partidas()">
+    <li class="list-group-item d-flex justify-content-between w-50" *ngFor="let p of partidas()">
 
-      🎮 {{ p.puntuacion }} pts
+      <div>
+        🎮 {{ p.puntuacion }} pts <br>
+        👤 {{ getJugadorNombre(p.jugadorId) }}
+      </div>
+      <div class="mt-2">
+        <button class="btn btn-warning btn-sm me-1"
+          (click)="editar(p)">
+          Editar
+        </button>
 
-      <br>
-
-      👤 {{ getJugadorNombre(p.jugadorId) }}
+        <button class="btn btn-danger btn-sm"
+          (click)="eliminar(p.id!)">
+          Eliminar
+        </button>
+      </div>
 
     </li>
   </ul>
